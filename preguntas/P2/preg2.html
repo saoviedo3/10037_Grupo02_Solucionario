@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Pregunta 2</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <style type="text/css">
+    body{
+        background: url("../../img/WhatsApp2023-06-20\ at\ 4.31.44\ PM.jpeg")  fixed no-repeat;
+        background-size: cover;
+    }
+
+    #logo {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+    }
+  </style>
+</head>
+
+<body>
+   
+    <div id="logo" style="padding-left:30%; padding-top: 10%;">
+        <br>
+        <img src="../../img/WhatsApp Image 2023-06-20 at 4.31.44 PM.jpeg" width="65%" align="center">
+    <h1 style="padding-left:25%;">Pregunta 2</h1>
+    <p>2) Desarrollar la función CargarDatos(), para desplegar el contenido (Asincrónico) de un archivo XML:</p>
+    <ul style="list-style-type: none;">
+      <li>xhttp = new XMLHttpRequest();<br>
+        xhttp.onreadystatechange = function() {;<br>
+        if (this.readyState == 4 && this.status == 200) {;<br>
+        document.getElementById("demo").innerHTML = ; <br>
+        this.responseText; <br>
+        }; <br>
+        }; ;<br>
+        xhttp.open("GET", "Texto.txt", true);<br>
+        xhttp.send();<br>
+      </li>
+    </ul>
+    <div class="section" id="enunciado" style="padding-left:25%;margin-top: 5%;">
+      <button style="align-self: center;" type="button" onclick="CargarDatos()">Obtener Datos</button>
+    </div>
+    <div class="section" id="resolucion" style="margin-top: 5%;">
+    </div>
+    <div class="section" style="margin-top: 5%;">
+    </div>
+    <br>
+    <button onclick="window.location.href='../../index.html'">Menu principal</button>
+  </div>
+
+  <script>
+    xhttp = new XMLHttpRequest(); //Creacion del objeto XMLHttpRequest
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+
+      }
+    };
+
+    xhttp.open("GET", "preg2.xml", true);//Enviar la solicitud para obtener el archivo .xml
+    xhttp.send();  // Solo funciona con el protocolo http (on-line)
+
+
+    //Funcion para recuperar los datos del archivo .xml
+    function CargarDatos() {
+      var xmlDoc = xhttp.responseXML;
+      var i;
+      var x = xmlDoc.getElementsByTagName("nombre");
+
+      for (i = 0; i < x.length; i++) {
+        document.getElementById("resolucion").innerHTML += xmlDoc.getElementsByTagName("nombre")[i].childNodes[0].nodeValue + " come " + xmlDoc.getElementsByTagName("comida")[i].childNodes[0].nodeValue + "<br>";
+      }
+    }
+
+  </script>
+
+</body>
+
+</html>
